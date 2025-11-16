@@ -2,13 +2,15 @@ import { create } from "zustand";
 import useUserStore from "./useUserStore";
 import useProjectStore from "./useProjectStore";
 
+const BASE_URL = import.meta.env.VITE_API_URL;
+
 const useTaskStore = create((set, get) => ({
   tasks: [],
   error: "",
 
   getAllTask: async (userId, projectId) => {
     const res = await fetch(
-      `http://localhost:3000/api/user/${userId}/project/${projectId}/tasks`,
+      `${BASE_URL}/user/${userId}/project/${projectId}/tasks`,
       {
         method: "GET",
         headers: { "Content-type": "application/json" },
@@ -25,7 +27,7 @@ const useTaskStore = create((set, get) => ({
   addTask: async (userId, title, desc, status, priority, projectId) => {
     const { setProjects, projects } = useProjectStore.getState();
     const res = await fetch(
-      `http://localhost:3000/api/user/${userId}/project/${projectId}/task`,
+      `${BASE_URL}/user/${userId}/project/${projectId}/task`,
       {
         method: "POST",
         body: JSON.stringify({ title, desc, status, priority }),
@@ -55,7 +57,7 @@ const useTaskStore = create((set, get) => ({
     priority
   ) => {
     const res = await fetch(
-      `http://localhost:3000/api/user/${userId}/project/${projectId}/task/${taskId}`,
+      `${BASE_URL}/user/${userId}/project/${projectId}/task/${taskId}`,
       {
         method: "PUT",
         body: JSON.stringify({ title, desc, status, priority }),
@@ -74,7 +76,7 @@ const useTaskStore = create((set, get) => ({
 
   updatedTaskField: async (userId, projectId, field, value) => {
     const res = await fetch(
-      `http://localhost:3000/api/user/${userId}/project/${projectId}/task`,
+      `${BASE_URL}/user/${userId}/project/${projectId}/task`,
       {
         method: "PATCH",
         body: JSON.stringify({ field, value }),
@@ -91,31 +93,30 @@ const useTaskStore = create((set, get) => ({
     });
   },
 
- deleteTask: async (userId, projectId, taskId) => {
-  const { setProjects } = useProjectStore.getState();
+  deleteTask: async (userId, projectId, taskId) => {
+    const { setProjects } = useProjectStore.getState();
 
-  const res = await fetch(
-    `http://localhost:3000/api/user/${userId}/project/${projectId}/task/${taskId}`,
-    {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
+    const res = await fetch(
+      `${BASE_URL}/user/${userId}/project/${projectId}/task/${taskId}`,
+      {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      return set({ error: data.errorMessage });
     }
-  );
 
-  const data = await res.json();
+    setProjects(data);
 
-  if (!res.ok) {
-    return set({ error: data.errorMessage });
-  }
-
-  setProjects(data);
-
-  const updatedProject = data.find((p) => p._id === projectId);
-  if (updatedProject) {
-    set({ tasks: updatedProject.tasks });
-  }
-},
-
+    const updatedProject = data.find((p) => p._id === projectId);
+    if (updatedProject) {
+      set({ tasks: updatedProject.tasks });
+    }
+  },
 }));
 
 export default useTaskStore;

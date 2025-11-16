@@ -8,6 +8,8 @@ import useLangStore from "../../store/useLangStore";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
+const BASE_URL = import.meta.env.VITE_API_URL;
+
 const EditTask = () => {
   const navigate = useNavigate();
 
@@ -31,7 +33,7 @@ const EditTask = () => {
 
   async function fetchTask(userId, taskID) {
     const res = await fetch(
-      `http://localhost:3000/api/user/${userId}/project/${projectId}/task/${taskId}`,
+      `${BASE_URL}/api/user/${userId}/project/${projectId}/task/${taskId}`,
       {
         method: "GET",
         headers: { "Content-Type": "application/json" },
@@ -45,7 +47,7 @@ const EditTask = () => {
 
   async function updateTask(userId, taskID) {
     const res = await fetch(
-      `http://localhost:3000/api/user/${userId}/project/${projectId}/task/${taskID}`,
+      `${BASE_URL}/api/user/${userId}/project/${projectId}/task/${taskID}`,
       {
         method: "PUT",
         body: JSON.stringify({ title, desc, status, priority }),

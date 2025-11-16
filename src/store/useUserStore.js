@@ -1,5 +1,7 @@
 import { create } from "zustand";
 
+const BASE_URL = import.meta.env.VITE_API_URL;
+
 const useUserStore = create((set, get) => ({
   user: {},
   error: "",
@@ -8,7 +10,7 @@ const useUserStore = create((set, get) => ({
 
   register: async (username, password, rePassword) => {
     try {
-      const res = await fetch("http://localhost:3000/api/register", {
+      const res = await fetch(`${BASE_URL}/register`, {
         method: "POST",
         body: JSON.stringify({ username, password, rePassword }),
         headers: { "Content-Type": "application/json" },
@@ -30,7 +32,7 @@ const useUserStore = create((set, get) => ({
 
   logIn: async (username, password) => {
     try {
-      const res = await fetch("http://localhost:3000/api/login", {
+      const res = await fetch(`${BASE_URL}/login`, {
         method: "POST",
         body: JSON.stringify({ username, password }),
         headers: { "Content-Type": "application/json" },
@@ -41,11 +43,11 @@ const useUserStore = create((set, get) => ({
       if (!res.ok) {
         console.log(data.errorMessage);
         set({ error: data.errorMessage });
-        return false
+        return false;
       }
 
       set({ user: data, error: "" });
-      return true
+      return true;
     } catch (error) {
       set({ error: "Network or server error" });
     }
@@ -56,11 +58,11 @@ const useUserStore = create((set, get) => ({
   },
 
   setError: (errorMessage) => {
-    set({error: errorMessage})
+    set({ error: errorMessage });
   },
 
   changePassword: async (oldPassword, newPassword) => {
-    const { user } = get(); 
+    const { user } = get();
 
     if (!user._id) {
       set({ error: "User not logged in" });
@@ -68,7 +70,7 @@ const useUserStore = create((set, get) => ({
     }
 
     try {
-      const res = await fetch(`http://localhost:3000/api/user/${user._id}`, {
+      const res = await fetch(`${BASE_URL}/user/${user._id}`, {
         method: "POST",
         body: JSON.stringify({ oldPassword, newPassword }),
         headers: { "Content-Type": "application/json" },
@@ -91,10 +93,10 @@ const useUserStore = create((set, get) => ({
   },
 
   updateUserField: async (field, value) => {
-    const { user } = get(); 
+    const { user } = get();
 
     try {
-      const res = await fetch(`http://localhost:3000/api/user/${user._id}`, {
+      const res = await fetch(`${BASE_URL}/user/${user._id}`, {
         method: "PATCH",
         body: JSON.stringify({ field, value }),
         headers: { "Content-Type": "application/json" },
