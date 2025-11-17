@@ -12,14 +12,16 @@ app.use(express.json());
 app.use(cors({
   origin: [
     "http://localhost:5173",
-    "https://nimble-youtiao-ee33c2.netlify.app"  // შენი Netlify domain
+    "https://nimble-youtiao-ee33c2.netlify.app" 
   ],
   credentials: true
 }));
 
-app.get("/ping", (req, res) => {
-  res.status(200).json({ status: "awake" });
+app.get("/keepalive", (req, res) => {
+  res.setHeader("Content-Type", "application/json");
+  return res.status(200).send('{"ok": true}');
 });
+
 
 
 const userRoute = require("./routes/user.route")
