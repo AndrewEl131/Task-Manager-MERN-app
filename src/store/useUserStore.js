@@ -10,7 +10,7 @@ const useUserStore = create((set, get) => ({
 
   register: async (username, password, rePassword) => {
     try {
-      const res = await fetch(`api/${BASE_URL}/register`, {
+      const res = await fetch(`${BASE_URL}/api/register`, {
         method: "POST",
         body: JSON.stringify({ username, password, rePassword }),
         headers: { "Content-Type": "application/json" },
