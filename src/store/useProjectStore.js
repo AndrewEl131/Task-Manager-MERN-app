@@ -12,7 +12,7 @@ const useProjectStore = create((set, get) => ({
   },
 
   getAllProjects: async (userId) => {
-    const res = await fetch(`${BASE_URL}/user/${userId}/projects`, {
+    const res = await fetch(`${BASE_URL}/api/user/${userId}/projects`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
@@ -24,7 +24,7 @@ const useProjectStore = create((set, get) => ({
   },
 
   addProject: async (userId, title, desc, color) => {
-    const res = await fetch(`${BASE_URL}/user/${userId}/project`, {
+    const res = await fetch(`${BASE_URL}/api/user/${userId}/project`, {
       method: "POST",
       body: JSON.stringify({ title, desc, color }),
       headers: { "Content-Type": "application/json" },
@@ -37,7 +37,7 @@ const useProjectStore = create((set, get) => ({
   },
 
   editProject: async (userId, projectId, title, desc, color) => {
-    const res = await fetch(`${BASE_URL}/user/${userId}/project/${projectId}`, {
+    const res = await fetch(`${BASE_URL}/api/user/${userId}/project/${projectId}`, {
       method: "POST",
       body: JSON.stringify({ title, desc, color }),
       headers: { "Content-Type": "application/json" },
@@ -50,7 +50,7 @@ const useProjectStore = create((set, get) => ({
   },
 
   updateProjectField: async (userId, projectId, field, value) => {
-    const res = await fetch(`${BASE_URL}/user/${userId}/project/${projectId}`, {
+    const res = await fetch(`${BASE_URL}/api/user/${userId}/project/${projectId}`, {
       method: "PATCH",
       body: JSON.stringify({ field, value }),
       headers: { "Content-Type": "application/json" },
@@ -63,7 +63,7 @@ const useProjectStore = create((set, get) => ({
   },
 
   deleteProject: async (userId, projectId) => {
-    const res = await fetch(`${BASE_URL}/user/${userId}/project/${projectId}`, {
+    const res = await fetch(`${BASE_URL}/api/user/${userId}/project/${projectId}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
     });

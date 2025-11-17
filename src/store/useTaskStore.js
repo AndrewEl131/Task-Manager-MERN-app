@@ -10,7 +10,7 @@ const useTaskStore = create((set, get) => ({
 
   getAllTask: async (userId, projectId) => {
     const res = await fetch(
-      `${BASE_URL}/user/${userId}/project/${projectId}/tasks`,
+      `${BASE_URL}/api/user/${userId}/project/${projectId}/tasks`,
       {
         method: "GET",
         headers: { "Content-type": "application/json" },
@@ -27,7 +27,7 @@ const useTaskStore = create((set, get) => ({
   addTask: async (userId, title, desc, status, priority, projectId) => {
     const { setProjects, projects } = useProjectStore.getState();
     const res = await fetch(
-      `${BASE_URL}/user/${userId}/project/${projectId}/task`,
+      `${BASE_URL}/api/user/${userId}/project/${projectId}/task`,
       {
         method: "POST",
         body: JSON.stringify({ title, desc, status, priority }),
@@ -57,7 +57,7 @@ const useTaskStore = create((set, get) => ({
     priority
   ) => {
     const res = await fetch(
-      `${BASE_URL}/user/${userId}/project/${projectId}/task/${taskId}`,
+      `${BASE_URL}/api/user/${userId}/project/${projectId}/task/${taskId}`,
       {
         method: "PUT",
         body: JSON.stringify({ title, desc, status, priority }),
@@ -76,7 +76,7 @@ const useTaskStore = create((set, get) => ({
 
   updatedTaskField: async (userId, projectId, field, value) => {
     const res = await fetch(
-      `${BASE_URL}/user/${userId}/project/${projectId}/task`,
+      `${BASE_URL}/api/user/${userId}/project/${projectId}/task`,
       {
         method: "PATCH",
         body: JSON.stringify({ field, value }),
@@ -97,7 +97,7 @@ const useTaskStore = create((set, get) => ({
     const { setProjects } = useProjectStore.getState();
 
     const res = await fetch(
-      `${BASE_URL}/user/${userId}/project/${projectId}/task/${taskId}`,
+      `${BASE_URL}/api/user/${userId}/project/${projectId}/task/${taskId}`,
       {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },

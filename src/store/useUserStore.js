@@ -32,7 +32,7 @@ const useUserStore = create((set, get) => ({
 
   logIn: async (username, password) => {
     try {
-      const res = await fetch(`${BASE_URL}/login`, {
+      const res = await fetch(`${BASE_URL}/api/login`, {
         method: "POST",
         body: JSON.stringify({ username, password }),
         headers: { "Content-Type": "application/json" },
@@ -70,7 +70,7 @@ const useUserStore = create((set, get) => ({
     }
 
     try {
-      const res = await fetch(`${BASE_URL}/user/${user._id}`, {
+      const res = await fetch(`${BASE_URL}/api/user/${user._id}`, {
         method: "POST",
         body: JSON.stringify({ oldPassword, newPassword }),
         headers: { "Content-Type": "application/json" },
@@ -96,7 +96,7 @@ const useUserStore = create((set, get) => ({
     const { user } = get();
 
     try {
-      const res = await fetch(`${BASE_URL}/user/${user._id}`, {
+      const res = await fetch(`${BASE_URL}/api/user/${user._id}`, {
         method: "PATCH",
         body: JSON.stringify({ field, value }),
         headers: { "Content-Type": "application/json" },
