@@ -10,10 +10,13 @@ const User = require("./models/user.model");
 app.use(express.json());
 
 app.use(cors({
-  origin: "http://localhost:5173", 
-  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+  origin: [
+    "http://localhost:5173",
+    "https://nimble-youtiao-ee33c2.netlify.app"  // შენი Netlify domain
+  ],
   credentials: true
 }));
+
 
 const userRoute = require("./routes/user.route")
 const projectRoute = require("./routes/project.route")
