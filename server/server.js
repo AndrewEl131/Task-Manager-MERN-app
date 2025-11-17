@@ -17,6 +17,10 @@ app.use(cors({
   credentials: true
 }));
 
+app.get("/", (req, res) => {
+  res.status(200).send("Server is awake!");
+});
+
 
 const userRoute = require("./routes/user.route")
 const projectRoute = require("./routes/project.route")
