@@ -18,9 +18,9 @@ app.use(cors({
 }));
 
 app.get("/keepalive", (req, res) => {
-  res.setHeader("Content-Type", "application/json");
-  return res.status(200).send('{"ok": true}');
+  res.status(200).json({ ok: true });
 });
+
 
 
 
