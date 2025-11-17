@@ -17,8 +17,8 @@ app.use(cors({
   credentials: true
 }));
 
-app.get("/", (req, res) => {
-  res.status(200).send("Server is awake!");
+app.get("/ping", (req, res) => {
+  res.status(200).json({ status: "awake" });
 });
 
 
