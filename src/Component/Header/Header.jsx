@@ -88,7 +88,10 @@ const Header = () => {
         </div>
       </div>
 
-      <div className="w-[5rem] h-full text-4xl flex justify-center items-center lg:hidden" onClick={() => navigate("/")}>
+      <div
+        className="w-[5rem] h-full text-4xl flex justify-center items-center lg:hidden"
+        onClick={() => navigate("/")}
+      >
         <i className="bxr  bx-home"></i>
       </div>
 

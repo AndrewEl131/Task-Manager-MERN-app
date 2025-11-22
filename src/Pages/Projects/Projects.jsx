@@ -59,7 +59,6 @@ const Projects = () => {
 
   return (
     <main className="w-full h-[100vh]">
-      <Header />
       <div className="w-full h-[95vh] pt-[3vmin] space-y-[3vmin]">
         <div className='w-full flex justify-evenly gap-[90vmin] lg:text-3xl font-["Outfit",_sans-serif] font-medium'>
           <span>{user.username}{lang == "en" ? "'s Workspace" : "ს სამუშო სივრცე"}</span>

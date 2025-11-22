@@ -26,7 +26,6 @@ const AddTask = () => {
 
   return (
     <main className="w-full h-[100vh]">
-      <Header />
       <div className="w-full h-[88vh] flex flex-col gap-2 items-center">
         <div className="w-full text-center text-4xl pt-3">
           {lang == "en" ? "You don't have any task, add it!" : "შენ არ გაქვს ტასკი, დაამატე ეს!"}

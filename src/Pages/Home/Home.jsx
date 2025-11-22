@@ -10,7 +10,6 @@ const Home = () => {
 
   return (
     <div className="w-full min-h-screen flex flex-col justify-between">
-      <Header />
       <div className="w-full lg:h-[153vmin] h-[90vh] flex justify-center">
         <div className="w-[125vmin] mt-5 h-full flex flex-col lg:gap-[3vmin] gap-[5vmin] pt-[3vmin]">
           <div className="w-full h-[10vh] text-4xl flex justify-evenly items-center">
@@ -30,7 +29,7 @@ const Home = () => {
                 <h1 className="text-slide-right glow-amber">
                   {lang == "en"
                     ? "Create projects, And Enjoy Your Show "
-                    : "შექმენით პროექტები და ისიამოვნეთ თქვენი შოუთი "}
+                    : "შექმენით პროექტები და ისიამოვნეთ თქვენი შოუთი"}
                 </h1>
               </div>
               <div className="w-full p-[2vmin] bg-[#420a3fcc] pr-[10vmin] text-end hover:bg-[#501a4dcc] hover:pr-[12vmin] transition-all duration-200 cursor-context-menu">

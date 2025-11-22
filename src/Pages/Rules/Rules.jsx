@@ -6,7 +6,6 @@ const Rules = () => {
   const { lang } = useLangStore();
   return (
     <main className="w-full min-h-screen">
-      <Header />
       <div className="w-full h-[70vh] flex justify-center items-center">
         <div className="w-[120vmin] h-full mt-[20vmin]">
           <div className="w-full text-center text-3xl">

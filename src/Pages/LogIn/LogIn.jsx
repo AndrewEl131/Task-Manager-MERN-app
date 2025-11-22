@@ -83,7 +83,6 @@ const LogIn = () => {
 
   return (
     <main className="w-full h-[100vh]">
-      <Header />
       <div className="w-full h-[90%] flex justify-center">
         <div className="w-[120vmin] h-full flex flex-col items-center gap-[4vmin] pt-[5vmin]">
           <div className="w-full text-red-500 text-4xl text-center">

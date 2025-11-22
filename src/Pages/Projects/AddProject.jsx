@@ -17,7 +17,6 @@ const AddProject = () => {
 
   return (
     <main className="w-full h-[100vh]">
-      <Header />
       <div className="w-full h-[95vh] flex flex-col items-center gap-[3vmin] pt-[3vmin]">
         <div className="w-full text-center text-3xl text-shadow-none">
           {lang == "en" ? "Add Projects" : "დაამატე პროექტი"}

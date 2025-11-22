@@ -75,8 +75,6 @@ const Tasks = () => {
 
   return (
     <main className="w-full h-auto pb-[14vmin]">
-      <Header />
-
       <div className="w-full h-full pt-[4vmin]">
         <DragDropContext onDragEnd={handleDragEnd}>
           <div className="w-full h-[90vh] space-y-[2vmin]">

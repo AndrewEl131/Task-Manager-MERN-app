@@ -76,7 +76,6 @@ const EditTask = () => {
 
   return (
     <main className="w-full h-[100vh]">
-      <Header />
       <div className="w-full h-[95vh] flex flex-col items-center gap-[3vmin] pt-[2vmin]">
         <div className='w-full pl-[12vmin] pr-[12vmin] text-3xl flex justify-between font-["BBH_Sans_Bogle",_sans-serif]'>
           <h1>{lang == "en" ? "Edit Task" : "ტასკის რედაქტირება"}</h1>

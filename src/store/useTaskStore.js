@@ -2,7 +2,7 @@ import { create } from "zustand";
 import useUserStore from "./useUserStore";
 import useProjectStore from "./useProjectStore";
 
-const BASE_URL = import.meta.env.VITE_API_URL;
+const BASE_URL = "https://task-manager-mern-appu.onrender.com";
 
 const useTaskStore = create((set, get) => ({
   tasks: [],

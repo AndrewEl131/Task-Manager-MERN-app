@@ -37,7 +37,6 @@ const Profile = () => {
 
   return (
     <main className="w-full h-[100vh]">
-      <Header />
       <div className="w-full h-[95vh]">
         <div className="w-[120vmin] h-full m-auto pt-[5vmin] space-y-[3.5vmin]">
           <div className='w-full text-5xl font-["BBH_Sans_Bogle",_sans-serif]'>

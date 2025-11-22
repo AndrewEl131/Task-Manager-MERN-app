@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import useProjectStore from "../../store/useProjectStore";
 import useUserStore from "../../store/useUserStore";
 
-const BASE_URL = import.meta.env.VITE_API_URL;
+const BASE_URL = "https://task-manager-mern-appu.onrender.com";
 
 const EditProject = () => {
   const { user } = useUserStore();
