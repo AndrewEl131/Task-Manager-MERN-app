@@ -95,12 +95,14 @@ const Header = () => {
         <i className="bxr  bx-home"></i>
       </div>
 
-      <div
-        className="w-[5rem] h-full text-4xl flex justify-center items-center lg:hidden"
-        onClick={() => setIsBurgerOpen(true)}
-      >
-        <i class="bxr  bx-menu-right"></i>
-      </div>
+      {!isBurgerOpen && (
+        <div
+          className="w-[5rem] h-full text-4xl flex justify-center items-center lg:hidden"
+          onClick={() => setIsBurgerOpen(true)}
+        >
+          <i class="bxr  bx-menu-right"></i>
+        </div>
+      )}
 
       {isBurgerOpen && (
         <div className='w-[50vmin] h-[120vmin] pt-[15vmin] pb-[3vmin] space-y-[10vmin] z-10 bg-[#1d0308] text-2xl font-["Stack_Sans_Notch",_sans-serif]'>

@@ -9,16 +9,18 @@ import useLangStore from "../../store/useLangStore";
 const LogIn = () => {
   const navigate = useNavigate();
   const { register, logIn, user, error, setError } = useUserStore();
-  const {setProjects} = useProjectStore();
+  const { setProjects } = useProjectStore();
   const [isLoginForm, setIsLoginForm] = useState(true);
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
 
+  const [passwordType, setPasswordType] = useState("password");
+
   const [err, setErr] = useState("");
 
-  const {lang} = useLangStore();
+  const { lang } = useLangStore();
 
   function handleReg() {
     if (username.length === 0 && password.length === 0)
@@ -57,8 +59,8 @@ const LogIn = () => {
     const success = await logIn(username, password);
     if (success) {
       const updatedUser = useUserStore.getState().user;
-      setProjects(updatedUser.projects)
-      navigate("/")
+      setProjects(updatedUser.projects);
+      navigate("/");
     } else {
       alert("Login failed");
     }
@@ -92,7 +94,9 @@ const LogIn = () => {
             {isLoginForm ? (
               <>
                 <div className="w-full h-[5rem] text-[22px] pl-[3vmin] flex flex-col gap-[1vmin]">
-                  <label>{lang == "en" ? "Username:" : "მომხმარებლის სახელი:"}</label>
+                  <label>
+                    {lang == "en" ? "Username:" : "მომხმარებლის სახელი:"}
+                  </label>
                   <input
                     type="text"
                     value={username}
@@ -104,23 +108,47 @@ const LogIn = () => {
                   />
                   {err.includes("username") && (
                     <div className="w-[20rem] p-1 text-[12px] text-red-600 absolute top-[27.5%]">
-                      {lang == "en" ? "Please Enter Username" : "გთხოვთ მიუთითეთ მომხმარებლის სახელი"}
+                      {lang == "en"
+                        ? "Please Enter Username"
+                        : "გთხოვთ მიუთითეთ მომხმარებლის სახელი"}
                     </div>
                   )}
                 </div>
 
-                <div className="w-full h-[5rem] text-[22px] pl-[3vmin] flex flex-col gap-[1vmin]">
+                <div className="w-full h-[5rem] text-[22px] pl-[3vmin] flex flex-col gap-[1vmin] relative">
                   <label>{lang == "en" ? "Password:" : "პაროლი:"}</label>
                   <input
-                    type="password"
+                    type={passwordType}
                     value={password}
-                    onChange={(e) => (setPassword(e.target.value), setError(""))}
+                    onChange={(e) => (
+                      setPassword(e.target.value), setError("")
+                    )}
                     className="w-[90%] p-3.5 bg-[#1f222e] rounded-[8px] text-[15px] text-gray-200 placeholder:text-[15px] border"
                     placeholder="Enter a password"
                   />
                   {err.includes("password") && (
                     <div className="w-[20rem] p-1 text-[12px] text-red-600 absolute top-[56%]">
-                      {lang == "en" ? "Please Enter Password" : "გთხოვთ მიუთითეთ პაროლი"}
+                      {lang == "en"
+                        ? "Please Enter Password"
+                        : "გთხოვთ მიუთითეთ პაროლი"}
+                    </div>
+                  )}
+
+                  {passwordType === "password" && (
+                    <div
+                      className="w-5 text-[1.6rem] absolute right-[6.6vmin] top-[5.8vmin] text-shadow-none text-[#423c63] cursor-pointer"
+                      onClick={() => setPasswordType("text")}
+                    >
+                      <i class="bxr  bx-eye"></i>
+                    </div>
+                  )}
+
+                  {passwordType === "text" && (
+                    <div
+                      className="w-5 text-[1.6rem] absolute right-[6.6vmin] top-[5.8vmin] text-shadow-none text-[#423c63] cursor-pointer"
+                      onClick={() => setPasswordType("password")}
+                    >
+                      <i class="bxr  bx-eye-closed"></i>
                     </div>
                   )}
                 </div>
@@ -128,49 +156,105 @@ const LogIn = () => {
             ) : (
               <>
                 <div className="w-full h-[5rem] text-[22px] pl-[3vmin] flex flex-col gap-[1vmin]">
-                  <label>{lang == "en" ? "Username:" : "მომხმარებლის სახელი:"}</label>
+                  <label>
+                    {lang == "en" ? "Username:" : "მომხმარებლის სახელი:"}
+                  </label>
                   <input
                     type="text"
                     value={username}
-                    onChange={(e) => {setUsername(e.target.value), setError("")}}
+                    onChange={(e) => {
+                      setUsername(e.target.value), setError("");
+                    }}
                     className="w-[90%] p-3.5 bg-[#1f222e] rounded-[8px] text-[15px] text-gray-200 placeholder:text-[15px] border"
-                    placeholder={lang == "en" ? "Please Enter Username" : "მიუთითეთ მომხმარებლის სახელი"}
+                    placeholder={
+                      lang == "en"
+                        ? "Please Enter Username"
+                        : "მიუთითეთ მომხმარებლის სახელი"
+                    }
                   />
                   {err.includes("usernamereg") && (
                     <div className="w-[20rem] p-1 text-[12px] text-red-600 absolute top-[27.5%]">
-                      {lang == "en" ? "Please Enter Username" : "მიუთითეთ მომხმარებლის სახელი"}
+                      {lang == "en"
+                        ? "Please Enter Username"
+                        : "მიუთითეთ მომხმარებლის სახელი"}
                     </div>
                   )}
                 </div>
 
-                <div className="w-full h-[5rem] text-[22px] pl-[3vmin] flex flex-col gap-[1vmin]">
+                <div className="w-full h-[5rem] text-[22px] pl-[3vmin] flex flex-col gap-[1vmin] relative">
                   <label>{lang == "en" ? "Password:" : "პაროლი:"}</label>
                   <input
-                    type="password"
+                    type={passwordType}
                     value={password}
-                    onChange={(e) => {setPassword(e.target.value), setError("")}}
+                    onChange={(e) => {
+                      setPassword(e.target.value), setError("");
+                    }}
                     className="w-[90%] p-3.5 bg-[#1f222e] rounded-[8px] text-[15px] text-gray-200 placeholder:text-[15px] border"
                     placeholder="Enter a password"
                   />
                   {err.includes("repass") && (
                     <div className="w-[20rem] p-1 text-[12px] text-red-600 absolute top-[43.5%]">
-                      {lang == "en" ? "Re Writed password is wrong" : "გამეორებული პაროლი არასწორია"}
+                      {lang == "en"
+                        ? "Re Writed password is wrong"
+                        : "გამეორებული პაროლი არასწორია"}
+                    </div>
+                  )}
+
+                  {passwordType === "password" && (
+                    <div
+                      className="w-5 text-[1.6rem] absolute right-[6.6vmin] top-[5.8vmin] text-shadow-none text-[#423c63] cursor-pointer"
+                      onClick={() => setPasswordType("text")}
+                    >
+                      <i class="bxr  bx-eye"></i>
+                    </div>
+                  )}
+
+                  {passwordType === "text" && (
+                    <div
+                      className="w-5 text-[1.6rem] absolute right-[6.6vmin] top-[5.8vmin] text-shadow-none text-[#423c63] cursor-pointer"
+                      onClick={() => setPasswordType("password")}
+                    >
+                      <i class="bxr  bx-eye-closed"></i>
                     </div>
                   )}
                 </div>
 
-                <div className="w-full h-[5rem] text-[20px] pl-[3vmin] flex flex-col gap-[1vmin]">
-                  <label>{lang == "en" ? "Re Write Password:" : "გაიმეორეთ პაროლი:"}</label>
+                <div className="w-full h-[5rem] text-[20px] pl-[3vmin] flex flex-col gap-[1vmin] relative">
+                  <label>
+                    {lang == "en" ? "Re Write Password:" : "გაიმეორეთ პაროლი:"}
+                  </label>
                   <input
-                    type="password"
+                    type={passwordType}
                     value={rePassword}
-                    onChange={(e) => {setRePassword(e.target.value), setError("")}}
+                    onChange={(e) => {
+                      setRePassword(e.target.value), setError("");
+                    }}
                     className="w-[90%] p-3.5 bg-[#1f222e] rounded-[8px] text-[15px] text-gray-200 placeholder:text-[15px] border"
                     placeholder="Rewrite a password"
                   />
                   {err.includes("repass") && (
                     <div className="w-[20rem] p-1 text-[12px] text-red-600 absolute top-[66%]">
-                      {lang == "en" ? "Re Writed password is wrong" : "გამეორებული პაროლი არასწორია"}
+                      {lang == "en"
+                        ? "Re Writed password is wrong"
+                        : "გამეორებული პაროლი არასწორია"}
+                    </div>
+                  )}
+
+                  {passwordType === "password" && (
+                    <div
+                      className="w-5 text-[1.6rem] absolute right-[6.6vmin] top-[5.8vmin] text-shadow-none text-[#423c63] cursor-pointer"
+                      onClick={() => setPasswordType("text")}
+                    >
+                      <i class="bxr  bx-eye"></i>
+                    </div>
+                  )}
+
+                  {passwordType === "text" && (
+                    <div
+                      className="w-5 text-[1.6rem] absolute right-[6.6vmin] top-[5.8vmin] text-shadow-none text-[#423c63] cursor-pointer"
+                      onClick={() => setPasswordType("password")}
+                    >
+                      <i class="bxr  bx-eye-closed"></i>
                     </div>
                   )}
                 </div>
@@ -188,8 +272,9 @@ const LogIn = () => {
                   }
                 }}
               >
-                {isLoginForm ?  translations[lang].login
-                : translations[lang].reg}
+                {isLoginForm
+                  ? translations[lang].login
+                  : translations[lang].reg}
               </button>
             </div>
 
