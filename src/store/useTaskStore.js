@@ -2,7 +2,11 @@ import { create } from "zustand";
 import useUserStore from "./useUserStore";
 import useProjectStore from "./useProjectStore";
 
+<<<<<<< HEAD
 const BASE_URL = "https://task-manager-mern-appu.onrender.com";
+=======
+const BASE_URL = "https://task-manager-mern-appu.onrender.com"
+>>>>>>> ee5af3f22a1fd5f2dd8bebb94256dffa5c1ede7f
 
 const useTaskStore = create((set, get) => ({
   tasks: [],

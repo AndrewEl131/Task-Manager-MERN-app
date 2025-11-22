@@ -17,13 +17,6 @@ app.use(cors({
   credentials: true
 }));
 
-app.get("/keepalive", (req, res) => {
-  res.status(200).json({ ok: true });
-});
-
-
-
-
 const userRoute = require("./routes/user.route")
 const projectRoute = require("./routes/project.route")
 const taskRoute = require("./routes/task.route")
