@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../../Component/Header/Header";
 import useUserStore from "../../store/useUserStore";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProfileExplorer from "./ProfileExplorer";
 import AboutProfile from "./AboutProfile";
 import ProfileEdit from "./ProfileEdit";
@@ -15,6 +15,10 @@ const Profile = () => {
   const { user } = useUserStore();
 
   const [form, setForm] = useState(`${lang == "en" ? "About Profile" : "პროფილის შესახებ"}`);
+
+  useEffect(() => {
+      document.title = `${user.username}'s Profile`;
+    }, []);
 
   const enTitle = `hello, ${user.username} !`
   const geTitle = `გამარჯობა, ${user.username} !`

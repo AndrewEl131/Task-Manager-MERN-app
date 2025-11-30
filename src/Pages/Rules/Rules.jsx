@@ -1,8 +1,14 @@
 import React from "react";
 import Header from "../../Component/Header/Header";
 import useLangStore from "../../store/useLangStore";
+import { useEffect } from "react";
 
 const Rules = () => {
+  
+  useEffect(() => {
+    document.title = `Rules`;
+  }, []);
+
   const { lang } = useLangStore();
   return (
     <main className="w-full min-h-screen">
@@ -26,8 +32,6 @@ const Rules = () => {
             </div>
             <div className="w-full lg:text-2xl pl-2">
               <h1>
-                
-
                 {lang == "en"
                   ? "2. Stay Organized – Create tasks with purpose. This platform is built to help you grow, not clutter your mind."
                   : "2. იყავით ორგანიზებული – შექმენით მიზანმიმართული ტასკები. ეს პლატფორმა შექმნილია იმისთვის, რომ დაგეხმაროთ განვითარებაში და არა გონების გადატვირთვაში."}
@@ -62,7 +66,7 @@ const Rules = () => {
               </h1>
             </div>
             <div className="w-full lg:text-2xl pl-2">
-              <h1> 
+              <h1>
                 {lang == "en"
                   ? "7. Enjoy the Process – This isn’t just a task manager — it’s your digital workspace for focus, freedom, and fun."
                   : "7. ისიამოვნეთ პროცესით – ეს არ არის მხოლოდ დავალებების მენეჯერი — ეს არის თქვენი ციფრული სამუშაო სივრცე ფოკუსირებისთვის, თავისუფლებისა და გართობისთვის."}

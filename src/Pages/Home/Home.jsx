@@ -4,13 +4,18 @@ import Footer from "../../Component/Footer/Footer";
 import Task from "../../Component/Task";
 import { Link } from "react-router-dom";
 import useLangStore from "../../store/useLangStore";
+import { useEffect } from "react";
 
 const Home = () => {
   const { lang } = useLangStore();
 
+  useEffect(() => {
+    document.title = `Home`;
+  }, []);
+
   return (
     <div className="w-full min-h-screen flex flex-col justify-between">
-      <div className="w-full lg:h-[153vmin] h-[90vh] flex justify-center">
+      <div className="w-full lg:h-[157vmin] h-[90vh] flex justify-center">
         <div className="w-[125vmin] mt-5 h-full flex flex-col lg:gap-[3vmin] gap-[5vmin] pt-[3vmin]">
           <div className="w-full h-[10vh] text-4xl flex justify-evenly items-center">
             <div className="shadow-dance-container">
@@ -19,7 +24,7 @@ const Home = () => {
           </div>
 
           <div className="w-full h-[65vmin] flex flex-col gap-[4vmin] mt-[3vmin]">
-            <div className='w-full lg:text-6xl text-2xl text-center mt-3 font-["BBH_Sans_Bogle",_sans-serif]'>
+            <div className='w-full lg:text-6xl text-2xl text-center mt-3 font-["BBH_Sans_Bogle",_sans-serif] pt-3 pb-3 blur-back'>
               <h1>
                 {lang == "en" ? "What can you do?" : "რა შეგიძლია გააკეთო?"}
               </h1>
@@ -70,11 +75,13 @@ const Home = () => {
             <Task status={"Done"} />
           </div>
 
+          <div className="w-[90%] h-0.5 border border-b-blue-400 m-auto"></div>
+
           <div className="w-full lg:h-[45vh] flex flex-col gap-5 lg:mt-0 ">
-            <div className="w-full lg:text-2xl text-center">
+            <div className='w-full lg:text-5xl text-center font-["BBH_Sans_Bogle",_sans-serif] pt-[0.5vmin] pb-[0.5vmin] blur-back'>
               {lang == "en"
-                ? "🔥 THIS IS HOW YOUR TASK GONNA LOOK LIKE — ENJOY! 🔥"
-                : "🔥 ესე გამოიყურება შენი ტასკი - ისიამოვნე 🔥"}
+                ? " THIS IS HOW YOUR TASK GONNA LOOK LIKE — ENJOY! "
+                : " ესე გამოიყურება შენი ტასკი - ისიამოვნე "}
             </div>
 
             <div className="w-full flex justify-center">
@@ -109,8 +116,8 @@ const Home = () => {
               <div className="w-[70%]">
                 <p>
                   {lang == "en"
-                    ? "My site gives you every luxury to build, modify, and finish your tasks your way — smooth, fast, and fun. So relax, take charge, and enjoy the experience of turning ideas into achievements. 🚀"
-                    : "ჩემი საიტი გაძლევთ ყველა იმ ფუფუნებას, რაც გჭირდებათ თქვენი ამოცანების შესაქმნელად, მოდიფიცირებისა და დასრულებისთვის თქვენივე გზით — შეუფერხებლად, სწრაფად და სახალისო. ასე რომ, დაისვენეთ, აიღეთ პასუხისმგებლობა და ისიამოვნეთ იდეების მიღწევებად გადაქცევის გამოცდილებით. 🚀"}
+                    ? "This site gives you every luxury to build, modify, and finish your tasks your way — smooth, fast, and fun. So relax, take charge, and enjoy the experience of turning ideas into achievements. 🚀"
+                    : "ეს საიტი გაძლევთ ყველა იმ ფუფუნებას, რაც გჭირდებათ თქვენი ამოცანების შესაქმნელად, მოდიფიცირებისა და დასრულებისთვის თქვენივე გზით — შეუფერხებლად, სწრაფად და სახალისო. ასე რომ, დაისვენეთ, აიღეთ პასუხისმგებლობა და ისიამოვნეთ იდეების მიღწევებად გადაქცევის გამოცდილებით. 🚀"}
                 </p>
               </div>
             </div>

@@ -13,6 +13,10 @@ const Tasks = () => {
   const { user } = useUserStore();
   const { projects } = useProjectStore();
 
+  useEffect(() => {
+    document.title = `${user.username}'s Tasks`;
+  }, []);
+
   const BASE_URL = import.meta.env.VITE_API_URL;
 
   const [todoTasks, setTodoTasks] = useState([]);
@@ -29,7 +33,8 @@ const Tasks = () => {
     if (tasks?.length === 0) return navigate(`/AddTask/${projectId}`);
 
     const todo = tasks.filter((item) => item.status === "To Do") || [];
-    const inProgress = tasks.filter((item) => item.status === "In Progress") || [];
+    const inProgress =
+      tasks.filter((item) => item.status === "In Progress") || [];
     const done = tasks.filter((item) => item.status === "Done") || [];
 
     setTodoTasks(todo);
@@ -123,7 +128,9 @@ const Tasks = () => {
                                 <div
                                   className="w-[3rem] h-[3rem] absolute right-0 bottom-0 bg-[#1C1F2B] flex justify-center items-center text-[21.5px] cursor-pointer"
                                   onClick={() =>
-                                    navigate(`/EditTask/${projectId}/${item._id}`)
+                                    navigate(
+                                      `/EditTask/${projectId}/${item._id}`
+                                    )
                                   }
                                 >
                                   <i className="bxr bx-pencil"></i>

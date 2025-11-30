@@ -12,7 +12,7 @@ const Task = ({ title, desc, status, width }) => {
 
   return (
     <div
-      className="lg:w-[18.5rem] w-[8rem] h-[10rem] lg:h-[13rem] rounded-2xl bg-[#1c1f2b] text-shadow-none"
+      className="lg:w-[18.5rem] w-[8rem] h-[10rem] lg:h-[13rem] rounded-2xl bg-[#1c1f2b] text-shadow-none pt-[0.5vmin]"
       style={{ border: `1px solid ${borderColor}`}}
     >
       <div className="w-full h-[15%] flex justify-center lg:text-[18.5px] text-[10px]">

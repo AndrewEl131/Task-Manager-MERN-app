@@ -19,6 +19,10 @@ const Projects = () => {
   const { lang } = useLangStore();
 
   useEffect(() => {
+    document.title = `${user.username}'s Projects`;
+  }, []);
+
+  useEffect(() => {
     if (!user || Object.keys(user).length === 0) return navigate("/Auth");
     if (projects?.length === 0) navigate("/AddProject");
   }, [projects]);
@@ -61,7 +65,10 @@ const Projects = () => {
     <main className="w-full h-[100vh]">
       <div className="w-full h-[95vh] pt-[3vmin] space-y-[3vmin]">
         <div className='w-full flex justify-evenly gap-[90vmin] lg:text-3xl font-["Outfit",_sans-serif] font-medium'>
-          <span>{user.username}{lang == "en" ? "'s Workspace" : "ს სამუშო სივრცე"}</span>
+          <span>
+            {user.username}
+            {lang == "en" ? "'s Workspace" : "ს სამუშო სივრცე"}
+          </span>
           <span>{lang == "en" ? "Projects" : "პროექტები"}</span>
         </div>
         <div className="w-full flex h-auto">
@@ -83,7 +90,9 @@ const Projects = () => {
                 <div className="w-full h-[30%] flex flex-col items-center">
                   <div className='w-full h-[80%] flex justify-around items-center gap-[30%] font-["BBH_Sans_Bogle",_sans-serif] text-[24px]'>
                     <h1>{item.title}</h1>
-                    <h1>{item.tasks.length} {lang == "en" ? "Task" : "ტასკი"}</h1>
+                    <h1>
+                      {item.tasks.length} {lang == "en" ? "Task" : "ტასკი"}
+                    </h1>
                   </div>
                   <div className="w-[85%] h-0.5 bg-[#f7e8e8] rounded-2xl m-[auto_0_auto_0]"></div>
                 </div>
